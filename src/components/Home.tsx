@@ -35,7 +35,7 @@ export const Home: React.FC = () => {
   return (
     <div className=' m-4 p-2 '>
 
-      <div className='text-3xl font-mono font-semibold text-center py-3 my-4'>Taskfiy</div>
+      <div className='text-5xl font-mono font-semibold text-center text-gray-300 py-3 my-4'>Taskfiy</div>
       <Form todo={todo} setTodo={setTodo} handleAdd={handleAdd} />
 
       <ShowTodo todos={todos} deleteTask={deleteTask} updateTask={updateTask} />
