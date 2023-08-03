@@ -4,6 +4,9 @@ const Counter = () => {
   const [val, setval] = useState(0);
 
   let title = useRef("Here is the value being updated" + val);
+
+  // everytime the value of val is changed, title updated too 
+  // so the useEffect hook will be executed
   useEffect(() => {
     title.current = `Here is the value being updated ${val}`;
   }, [val]);
@@ -15,6 +18,8 @@ const Counter = () => {
       </div>
 
       <div className="p-3 w-8/12 mx-auto flex justify-center gap-x-10 items-center  ">
+
+        {/* button which increments the counter */}
         <p>
           <button
             onClick={() => setval(val - 1)}
@@ -23,7 +28,12 @@ const Counter = () => {
             <span> - </span>
           </button>
         </p>
+
+        {/* displays the counter value */}
         <p className="text-gray-600 font-bold text-7xl"> {val} </p>
+
+
+        {/* button which decrements the counter */}
         <p>
           <button
             onClick={() => setval(val + 1)}
