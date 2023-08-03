@@ -1,3 +1,7 @@
 ## React.js card component designed for exploring react components and importing the.
 
-![image](https://github.com/dawit01/A2SV__Web-learning-Path/assets/84455217/427c2334-5de5-482b-8ffc-fe84421960ab)
+<br />
+<br />
+
+![image](https://github.com/dawit01/A2SV__Web-learning-Path/assets/84455217/f023f7f1-abe1-43bd-b5c7-9793c61f3df7)
+
