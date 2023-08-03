@@ -12,9 +12,9 @@ const Counter = () => {
   }, [val]);
 
   return (
-    <div className="rounded-lg flex-col bg-gray-300 my-4 h-[30rem] mx-auto flex justify-center p-2">
+    <div className="font-mono rounded-lg flex-col bg-gray-300 my-4 h-[30rem] mx-auto flex justify-center p-2">
       <div className="text-center bg-gray-100 rounded-md shadow-xl my-5  p-3 py-6 w-6/12 mx-auto text-3xl font-bold text-blue-500">
-        <span  >Title: {title.current}</span>
+        <span className="text-4xl text-gray-500 mx-4"  >Title:-</span>{title.current}
       </div>
 
       <div className="p-3 w-8/12 mx-auto flex justify-center gap-x-10 items-center  ">
