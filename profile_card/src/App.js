@@ -1,6 +1,9 @@
+import Card from "./components/Card";
+
 function App() {
   return (
-    <div className="outilne w-full h-[30rem] bg-[red]">
+    <div className=" flex justify-center m-2">
+      <Card />
     </div>
   );
 }
