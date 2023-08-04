@@ -1,25 +1,34 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Person } from "../model/model";
 import { PersonContext } from "../../context/UserContext";
 
 const AddContact = () => {
-  const [person, setPerson] = useState<Person>({});
+  const [person, setPerson] = useState<Person>({
+    fullName: "",
+    age: undefined,
+    department: "",
+  });
   const { personList, setPersonList } = useContext(PersonContext);
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    setPersonList([
-      ...personList,
-      {
+    if (person.fullName && person.department && person.age) {
+      const newPerson: Person = {
         id: Date.now(),
         fullName: person.fullName,
         department: person.department,
         age: person.age,
-      },
-    ]);
-    setPerson({});
-    console.log(personList);
+      };
+
+      setPersonList([...personList, newPerson]);
+      setPerson({ fullName: "", age: NaN, department: "" });
+    }
+    console.log(person);
   };
+
+  // useEffect(() => {
+  //   setPerson({ fullName: "", age: NaN, department: "" });
+  // }, [personList]);
 
   return (
     <div className="bg-gray-900 p-4">
@@ -30,6 +39,7 @@ const AddContact = () => {
           </label>
           <input
             type="text"
+            required
             value={person?.fullName}
             onChange={(event) =>
               setPerson({
@@ -45,14 +55,18 @@ const AddContact = () => {
             Age
           </label>
           <input
-            value={person?.age}
+            value={person?.age !== null ? person?.age : ""}
             type="number"
-            onChange={(event) =>
+            required
+            onChange={(event) => {
               setPerson({
                 ...person,
-                age: parseInt(event.target.value) || undefined,
-              })
-            }
+                age:
+                  event.target.value !== null
+                    ? parseInt(event.target.value)
+                    : NaN,
+              });
+            }}
             className="bg-gray-800 appearance-none border border-gray-800 rounded w-full py-2 px-3 text-gray-200 leading-tight focus:outline-none focus:border-gray-500"
           />
         </div>
@@ -61,6 +75,7 @@ const AddContact = () => {
             Department
           </label>
           <input
+            required
             value={person?.department}
             type="text"
             onChange={(event) =>
