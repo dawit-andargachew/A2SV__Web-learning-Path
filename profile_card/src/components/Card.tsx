@@ -3,19 +3,21 @@ import Avatar from "./Avatar";
 import { Tags } from "./Tags";
 import DetailInfo from "./DetailInfo";
 import ReadMore from "./ReadMore";
+import { Data } from "../models/model";
 
 const Card = () => {
-
-// an object which contains the data we want  
-  const data = {
-    defailInfo:{
-      title:"The Coldest Sunset",
-      description:`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus
+  
+  // a dummy data based on Data interface
+  const dummyData: Data = {
+    defailInfo: {
+      title: "The Coldest Sunset",
+      description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus
       quia, nulla! Maiores et perferendis eaque, exercitationem praesentium
       nihil. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-      Voluptatibus quia,` 
+      Voluptatibus quia,`,
     },
-    image: "https://image.shutterstock.com/image-photo/young-handsome-man-beard-wearing-260nw-1768126784.jpg",
+    image:
+      "https://image.shutterstock.com/image-photo/young-handsome-man-beard-wearing-260nw-1768126784.jpg",
     readmore: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus
     quia, nulla! Maiores et perferendis eaque, exercitationem praesentium
     nihil. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -23,19 +25,17 @@ const Card = () => {
     praesentium nihil. Lorem ipsum dolor sit amet, consectetur adipisicing
     elit. Voluptatibus quia, nulla! Maiores et perferendis eaque,
     exercitationem praesentium nihil.`,
-    tags: ['#photography', '  #travel', '#winter' ]
-
-  }
-
+    tags: ["#photography", "  #travel", "#winter"],
+  };
 
   /// contain other components and a state hook to display ReadMore section when the button is clicked
   const [isVisible, setVisible] = useState(false);
   return (
     <div className="  shadow-lg rounded-lg p  outline-[red] my-5 ">
       <div className="max-w-sm rounded p-2 overflow-hidden shadow-lg">
-        <Avatar image={data.image} />
-        <DetailInfo defailInfo = {data.defailInfo} />
-        <Tags tags={data.tags} />
+        <Avatar imageURL={dummyData.image} />
+        <DetailInfo detailInfo={dummyData.defailInfo} />
+        <Tags tags={dummyData.tags} />
         <div className=" m-2 ">
           <button
             onClick={() => setVisible(!isVisible)}
@@ -44,7 +44,7 @@ const Card = () => {
             {!isVisible ? "Read More" : "See Less"}
           </button>
         </div>
-        {isVisible && <ReadMore readmore= {data.readmore} />}
+        {isVisible && <ReadMore readmore={dummyData.readmore} />}
       </div>
     </div>
   );

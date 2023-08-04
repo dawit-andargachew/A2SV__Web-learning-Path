@@ -1,6 +1,10 @@
 import React from "react";
+import { Data } from "../models/model";
+interface Props {
+  tags: Data["tags"];
+}
 
-export const Tags = ({ tags }) => {
+export const Tags = ({ tags }: Props) => {
   // displays tags used on the component
   return (
     <div className="px-4 pt-4 pb-2 ">
