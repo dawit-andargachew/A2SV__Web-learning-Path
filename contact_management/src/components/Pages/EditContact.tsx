@@ -6,7 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 const EditContact: React.FC = () => {
   const params = useParams();
   const id = Number(params.id); // Convert id to a number
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   // const id = useParams()
 
   const [person, setPerson] = useState<Person>({});
@@ -17,22 +17,27 @@ const EditContact: React.FC = () => {
       const p = personList.find((person) => person.id === id);
       if (p) {
         setPerson(p);
+        console.log(p);
       }
     }
   }, [id]);
 
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    setPersonList([
-      ...personList,
-      {
-        id: Date.now(),
+  const handleUpdate = (id: number) => {
+    const updatedPersonList = personList.map((item) => {
+      if (item.id !== id) {
+        return item;
+      }
+
+      return {
+        id: person.id,
         fullName: person.fullName,
-        department: person.department,
         age: person.age,
-      },
-    ]);
-    navigate('/')
+        department: person.department,
+      };
+      // }
+    });
+    setPersonList(updatedPersonList);
+    navigate("/");
     setPerson({});
   };
 
@@ -40,13 +45,13 @@ const EditContact: React.FC = () => {
     if (id) {
       const updatedList = personList.filter((person) => person.id !== id);
       setPersonList(updatedList);
-      navigate('/')
+      navigate("/");
     }
   };
 
   return (
     <div className="bg-gray-900 p-4">
-      <form onSubmit={handleSubmit}>
+      <form>
         <div className="mb-4">
           <label className="block text-gray-400 text-sm font-medium mb-1">
             Full Name
@@ -94,7 +99,8 @@ const EditContact: React.FC = () => {
         </div>
         <div className="flex justify-between">
           <button
-            type="submit"
+            type="button"
+            onClick={() => handleUpdate(person.id || 0)}
             className="bg-gray-800 hover:bg-gray-700 text-gray-300 font-medium py-2 px-4 rounded focus:outline-none focus:bg-gray-700"
           >
             Submit
