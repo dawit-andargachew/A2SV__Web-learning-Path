@@ -101,9 +101,9 @@ const EditContact: React.FC = () => {
           <button
             type="button"
             onClick={() => handleUpdate(person.id || 0)}
-            className="bg-gray-800 hover:bg-gray-700 text-gray-300 font-medium py-2 px-4 rounded focus:outline-none focus:bg-gray-700"
+            className="bg-yellow-400 hover:bg-yellow-300 text-gray-600 font-medium py-2 px-4 rounded focus:outline-none focus:bg-gray-700"
           >
-            Submit
+            Update
           </button>
           <div>
             <button
