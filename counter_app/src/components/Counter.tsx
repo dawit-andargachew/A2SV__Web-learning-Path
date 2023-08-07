@@ -23,7 +23,7 @@ const Counter = () => {
   }, [val]);
 
   return (
-    <div className="font-mono w-8/12 rounded-lg flex-col bg-gray-300 my-4 h-[30rem] mx-auto flex justify-center p-2">
+    <div className="font-mono w-10/12 rounded-lg flex-col bg-gray-300 my-4 h-[30rem] mx-auto flex justify-center p-2">
       <div className="text-center bg-gray-100 rounded-md shadow-xl my-5  p-3 py-6 w-9/12 mx-auto text-3xl font-bold text-blue-500">
         <span className="text-4xl text-gray-500 mx-4">Title:-</span>
         {title.current}
