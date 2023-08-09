@@ -1,15 +1,23 @@
 {
-  "name": "recipie",
+  "name": "tailwind-tutorial",
   "version": "1.0.0",
-  "description": "",
+  "description": "All the course files for the Tailwind CSS tutorial on the Net Ninja YouTube channel.",
   "main": "index.js",
   "scripts": {
     "build-css": "tailwindcss build src/styles.css -o public/styles.css"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamshaunjp/tailwind-tutorial.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iamshaunjp/tailwind-tutorial/issues"
+  },
+  "homepage": "https://github.com/iamshaunjp/tailwind-tutorial#readme",
   "dependencies": {
-    "tailwindcss": "^3.3.3"
+    "tailwindcss": "^1.4.6"
   }
 }
