@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { addTodo } from "../redux_context/store";
+import { addTodo } from "../reducer/reducers";
 import { useDispatch } from "react-redux";
 
 export const Form: React.FC = () => {

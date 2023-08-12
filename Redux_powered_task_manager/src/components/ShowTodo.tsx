@@ -6,7 +6,7 @@ import {
   AiFillCheckCircle,
   AiFillSave,
 } from "react-icons/ai";
-import { deleteTodo, updateTodo, markAsDone } from "../redux_context/store";
+import { deleteTodo, updateTodo, markAsDone } from "../reducer/reducers";
 import { useDispatch, useSelector } from "react-redux";
 
 // todos,

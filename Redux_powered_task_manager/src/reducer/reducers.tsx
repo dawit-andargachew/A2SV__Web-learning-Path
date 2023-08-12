@@ -1,4 +1,4 @@
-import { PayloadAction, configureStore, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { Todo } from "../models/model";
 
 interface TodoState {
@@ -9,7 +9,7 @@ const initialState: TodoState = {
   todos: [],
 };
 
-const todoSlice = createSlice({
+export const todoSlice = createSlice({
   name: "todos",
   initialState,
   reducers: {
@@ -48,8 +48,3 @@ const todoSlice = createSlice({
 
 export const { addTodo, deleteTodo, markAsDone, updateTodo } =
   todoSlice.actions;
-export const store = configureStore({
-  reducer: {
-    storedList: todoSlice.reducer, // can be any name just used by useSelector hook
-  },
-});
