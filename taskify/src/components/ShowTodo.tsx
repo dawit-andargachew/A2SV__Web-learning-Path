@@ -4,47 +4,52 @@ import {
   AiOutlineDelete,
   AiOutlineEdit,
   AiFillCheckCircle,
-  AiFillSave
+  AiFillSave,
 } from "react-icons/ai";
+import { deleteTodo, updateTodo, markAsDone } from "../redux_context/store";
+import { useDispatch, useSelector } from "react-redux";
 
-interface Props {
-  todos: Todo[];
-  deleteTask: (id: any) => void;
-  markasDone: (id: any) => void;
-  updateTask: (id: any, content: string) => void;
-}
+// todos,
 
-export const ShowTodo: React.FC<Props> = ({
-  todos,
-  deleteTask,
-  markasDone,
-  updateTask,
-}: Props) => {
+export const ShowTodo: React.FC = () => {
   const [currTodo, setCurrTodo] = useState<Todo | null>(null);
   const todoRef = useRef<HTMLInputElement>(null);
 
+  //  helps to set the focus  when edit button is clicked
+  // simple make the cursor on the input field when the button is clicked
   useEffect(() => {
     if (currTodo && todoRef.current) {
       todoRef.current.focus();
     }
   }, [currTodo]);
 
+  const dispath = useDispatch();
+
+  //set the `setCurrTodo` so that the useEffect hook will run and
+  // 1. the input field hold the current todo value   2. the cursor focus will be set
   const handleEditClick = (todo: Todo) => {
     setCurrTodo(todo);
   };
 
+  // make the todo to be updated with its id
   const handleUpdateClick = () => {
+    console.log(todoRef.current?.value);
+    console.log(currTodo);
+
     if (currTodo && todoRef.current) {
-      updateTask(currTodo.id, todoRef.current.value);
+      dispath(updateTodo({ id: currTodo.id, todo: todoRef.current.value }));
       setCurrTodo(null);
     }
   };
 
+  // get the list of states from the redux state
+  const todoList = useSelector((state: any) => state.storedList.todos);
+
   return (
     <section className="flex min-h-[20rem] w-full">
       <article className="w-1/2">
-        {todos.map(
-          (todo) =>
+        {todoList.map(
+          (todo: Todo) =>
             !todo.isDone && (
               <div
                 key={todo.id}
@@ -55,12 +60,13 @@ export const ShowTodo: React.FC<Props> = ({
                     <input
                       type="text"
                       ref={todoRef}
+                      // required
                       className="text-xl  bg-inherit font-semibold outline outline-teal-200 py-1 outline-[3px] rounded-sm text-teal-900 w-7/12 ml-5"
                       defaultValue={currTodo.todo}
                     />
                     <span
                       className="outline ml-6 hover:bg-teal-400 hover:text-white rounded-md outline-lime-bg-teal-400  outline-[2px] text-lime-bg-teal-400 text-teal-500 p-2 m-1 cursor-pointer"
-                      onClick={handleUpdateClick}
+                      onClick={() => handleUpdateClick()}
                     >
                       <AiFillSave />
                     </span>
@@ -81,14 +87,14 @@ export const ShowTodo: React.FC<Props> = ({
                     <AiOutlineEdit />
                   </span>
                   <span
-                    onClick={() => markasDone(todo.id)}
+                    onClick={() => dispath(markAsDone(todo.id))}
                     className="outline hover:bg-[green] hover:text-white rounded-md outline-[green] outline-[2px] text-[green] p-2 m-1 cursor-pointer"
                   >
                     <AiFillCheckCircle />
                   </span>
 
                   <span
-                    onClick={() => deleteTask(todo.id)}
+                    onClick={() => dispath(deleteTodo(todo.id))}
                     className="outline hover:bg-[red] hover:text-white rounded-md outline-[red] outline-[2px] text-[red] p-2 m-1 cursor-pointer"
                   >
                     <AiOutlineDelete />
@@ -100,8 +106,8 @@ export const ShowTodo: React.FC<Props> = ({
       </article>
 
       <article className="w-1/2">
-        {todos.map(
-          (todo) =>
+        {todoList.map(
+          (todo: Todo) =>
             todo.isDone && (
               <div
                 key={todo.id}
@@ -110,7 +116,7 @@ export const ShowTodo: React.FC<Props> = ({
                 <span className="ext-xl font-semibold ml-5"> {todo.todo} </span>
                 <p className="flex w-4/12 ml-auto justify-center gap-x-8 items-center">
                   <span
-                    onClick={() => deleteTask(todo.id)}
+                    onClick={() => dispath(deleteTodo(todo.id))}
                     className="outline hover:bg-[red] hover:text-white rounded-md outline-[red] outline-[2px] text-[red] p-2 m-1 cursor-pointer"
                   >
                     <AiOutlineDelete />
