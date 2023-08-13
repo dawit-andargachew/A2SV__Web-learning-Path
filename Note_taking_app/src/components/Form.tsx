@@ -3,9 +3,14 @@ import { addNote } from "../reducer/reducer";
 import { useDispatch } from "react-redux";
 
 export const Form: React.FC = () => {
+  
+  // stor the current note that is going to added to notes list
   const [note, setNote] = useState<string>("");
+
+  /// helps to call methods on the redux
   const dispath = useDispatch();
 
+  // handles submit -> add a new note to the global state
   const handleOnSubmit = (
     event: React.FormEventHandler<HTMLFormElement> | any
   ) => {
