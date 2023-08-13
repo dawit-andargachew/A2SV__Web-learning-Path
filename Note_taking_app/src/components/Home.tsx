@@ -1,13 +1,13 @@
 import React from "react";
 import { Form } from "./Form";
-import { ShowTodo } from "./ShowTodo";
+import { ShowNote } from "./ShowNote";
 
 export const Home: React.FC = () => {
   return (
     // displays notes adding and note showing components
     <div className=" py-6 ">
       <Form />
-      <ShowTodo />
+      <ShowNote />
     </div>
   );
 };
