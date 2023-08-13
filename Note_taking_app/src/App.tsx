@@ -5,8 +5,9 @@ import { store } from './store/store';
 
 const App: React.FC = () => {
   return (
-    <Provider store={store}>
 
+    // wrap components so that they can interact with the global state
+    <Provider store={store}>
     <div className="">
       <Home />
     </div>
