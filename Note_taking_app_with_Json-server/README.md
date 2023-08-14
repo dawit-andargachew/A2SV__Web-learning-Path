@@ -15,7 +15,7 @@ npm install
 - Build and run the project <br />
   open two terminals and run those 2 commands
 ```
-npm run dev
+npm run start
 npm run server
 ```
   Navigate to `http://localhost:3000`
