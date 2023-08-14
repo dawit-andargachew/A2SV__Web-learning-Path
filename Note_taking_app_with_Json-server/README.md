@@ -20,9 +20,12 @@ npm run server
 ```
   Navigate to `http://localhost:3000`
 
+<br />
 
 
-#### here is a sample screenshot
+## here are sample screenshots
+
+<br />
 
 ![image](https://github.com/dawit-andargachew/A2SV__Web-learning-Path/assets/84455217/1b3fa2ec-16f7-4dbd-80aa-dd0c5fe15317)
 
