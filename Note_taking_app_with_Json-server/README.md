@@ -1,4 +1,25 @@
-### It is a minimalistic note taking application using React and redux state managemnt.
+# It is a minimalistic note taking application using React and redux state managemnt.
+---
+
+
+## Getting started
+- Clone the repository
+```
+git clone  <git lab template url> <project_name>
+```
+- Install dependencies
+```
+cd <project_name>
+npm install
+```
+- Build and run the project <br />
+  open two terminals and run those 2 commands
+```
+npm run dev
+npm run server
+```
+  Navigate to `http://localhost:3000`
+
 
 
 #### here is a sample screenshot
