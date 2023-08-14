@@ -1,24 +1,24 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { Note } from "../models/model";
 
-
 // interface for the global list of notes
 interface TodoState {
   notes: Note[];
 }
 
-
 /// initial state, just empty array
 const initialState: TodoState = {
-    notes: [],
+  notes: [],
 };
-
 
 // reduces to interact with the global state
 export const notesSlice = createSlice({
   name: "notes",
   initialState,
   reducers: {
+    setNotesFromBackEnd: (state: TodoState, action: PayloadAction<Note[]>) => {
+      state.notes = action.payload;
+    },
     addNote: (state: TodoState, action: PayloadAction<Note>) => {
       state.notes.push(action.payload);
     },
@@ -30,20 +30,20 @@ export const notesSlice = createSlice({
         state.notes.splice(todoIndex, 1);
       }
     },
-
     updateNote: (
       state: TodoState,
-      action: PayloadAction<{ id: number; note: string }>
+      action: PayloadAction<{ id: number; newbody: string }>
     ) => {
-      const { id, note } = action.payload;
-      const noteToUpdate = state.notes.find((notecontent) => notecontent.id === id);
+      const { id, newbody } = action.payload;
+      const noteToUpdate = state.notes.find(
+        (newNote) => newNote.id === id
+      );
       if (noteToUpdate) {
-        noteToUpdate.noteContent = note;
+        noteToUpdate.body = newbody;
       }
     },
   },
 });
 
-
 // export each reducer or function to be accessed by other components
-export const { addNote, deleteNote, updateNote } = notesSlice.actions;
+export const { setNotesFromBackEnd, addNote, deleteNote, updateNote } = notesSlice.actions;

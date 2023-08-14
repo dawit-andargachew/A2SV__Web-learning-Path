@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { addNote } from "../reducer/reducer";
 import { useDispatch } from "react-redux";
+import axios from "axios";
 
 export const Form: React.FC = () => {
-  
   // stor the current note that is going to added to notes list
   const [note, setNote] = useState<string>("");
 
@@ -15,7 +15,19 @@ export const Form: React.FC = () => {
     event: React.FormEventHandler<HTMLFormElement> | any
   ) => {
     event.preventDefault();
-    dispath(addNote({ id: Date.now(), noteContent: note }));
+
+    // send a requeset to add a new note on the
+    axios
+      .post("http://localhost:3001/notes", { id: Date.now(), body: note })
+      .then((response) => {
+        
+        /// if the request is succesfull the state will be updated
+        dispath(addNote(response.data));
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+
     setNote("");
   };
 
