@@ -1,5 +1,5 @@
-// notes model 
-export interface Note {
+export interface Todo {
     id: number,
-    noteContent: string,
+    todo: string,
+    isDone: boolean
 }
