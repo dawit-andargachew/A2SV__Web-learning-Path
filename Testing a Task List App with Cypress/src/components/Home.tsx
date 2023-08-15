@@ -1,18 +1,13 @@
 import React from "react";
 import { Form } from "./Form";
-import { ShowTodo } from "./ShowTodo";
+import { ShowNote } from "./ShowNote";
 
 export const Home: React.FC = () => {
   return (
-    <div className=" m-4 p-2 ">
-      <div className="text-5xl font-mono font-semibold text-center text-gray-300 py-3 my-4">
-        Taskfiy
-      </div>
-      {/* helps to add task  */}
+    // displays notes adding and note showing components
+    <div className=" py-6 ">
       <Form />
-
-      {/* display todo list */}
-      <ShowTodo />
+      <ShowNote />
     </div>
   );
 };
