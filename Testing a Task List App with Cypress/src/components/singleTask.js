@@ -11,7 +11,7 @@ const SingleTask = (props) => {
   //each task is rendered
   return (
     <div
-      className="  single_task p-3 rounded border-teal-600 border-2 flex justify-between gap-3"
+      className=" text-teal-900 font-mono text-lg w-full outline-2 single_task p-3 rounded border-teal-600 border-2 flex justify-between gap-3"
       key={task.id}
     >
       {!isEdit ? (
@@ -20,7 +20,7 @@ const SingleTask = (props) => {
         </span>
       ) : (
         <textarea
-          className="border-teal-600 border-2 rounded"
+          className=" focus:outline-none p-1 w-full border-teal-600 border-2 rounded"
           type="text"
           value={edit_task}
           onChange={(e) => setEditTask(e.target.value)}
